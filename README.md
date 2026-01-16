@@ -18,8 +18,9 @@ library(linkbreedeR)
 run_blupf90("parameter_file.par")
 
 # Run PLINK
-run_plink("--bfile", "mydata", "--freq")
-run_plink("--bfile", "mydata", "--assoc")
+run_plink("--bfile mydata --freq")
+run_plink("--bfile mydata --assoc")
+run_plink("--bfile 1 --make-bed --out 1")
 
 # Run RENUMF90
 run_renumf90("parameter_file.par")
