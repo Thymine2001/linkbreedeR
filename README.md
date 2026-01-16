@@ -14,11 +14,6 @@ devtools::install_github("Thymine2001/linkbreedeR")
 ```r
 library(linkbreedeR)
 
-# Get tool path (automatically detects your OS)
-get_tool_path("blupf90")
-get_tool_path("plink")
-get_tool_path("renumf90")
-
 # Run BLUPF90+
 run_blupf90("parameter_file.par")
 
