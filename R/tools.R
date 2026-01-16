@@ -152,9 +152,9 @@ run_blupf90 <- function(par_file, data_file = NULL, ...) {
 #'
 #' Execute PLINK for genome-wide association studies and quality control.
 #'
-#' @param ... Arguments to pass to the PLINK executable.
+#' @param cmd Character string containing PLINK command arguments.
 #'
-#' @return Invisible list containing exit code, stdout, and stderr from the process.
+#' @return Exit code from the PLINK process.
 #' @export
 #'
 #' @details
@@ -163,31 +163,25 @@ run_blupf90 <- function(par_file, data_file = NULL, ...) {
 #'
 #' @examples
 #' \dontrun{
-#'   run_plink("--bfile", "mydata", "--freq")
+#'   run_plink("--bfile mydata --freq")
+#'   run_plink("--bfile 1 --make-bed --out 1")
 #' }
 #'
-run_plink <- function(...) {
+run_plink <- function(cmd) {
   tool_path <- get_tool_path("plink")
   
-  # Build command arguments
-  args <- list(...)
-  
-  if (length(args) == 0) {
+  if (missing(cmd) || nchar(cmd) == 0) {
     stop("Please provide arguments for PLINK. Use --help for available options.")
   }
   
-  # Convert arguments to character vector
-  args_vec <- unlist(args)
+  # Build complete command
+  full_cmd <- paste(shQuote(tool_path), cmd)
   
-  # Execute tool
-  message("Running PLINK with arguments: ", paste(args_vec, collapse = " "))
-  result <- processx::run(tool_path, args = args_vec, error_on_status = FALSE)
+  # Execute tool using system()
+  message("Running PLINK: ", full_cmd)
+  exit_code <- system(full_cmd)
   
-  return(invisible(list(
-    exit_code = result$status,
-    stdout = result$stdout,
-    stderr = result$stderr
-  )))
+  return(invisible(exit_code))
 }
 
 
