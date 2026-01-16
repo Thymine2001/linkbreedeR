@@ -1,0 +1,12 @@
+^linkbreedeR\.Rproj$
+^\.Rproj\.user$
+^\.git$
+^\.gitignore$
+^\.DS_Store$
+^linux$
+^macos$
+^windows$
+^\.github$
+^.*\.md$
+^docs$
+^vignettes

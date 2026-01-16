@@ -1,0 +1,25 @@
+Package: linkbreedeR
+Title: Integrated Tools for Genetic Analysis and Breeding
+Version: 0.1.0
+Authors@R: 
+    person("Author", "Name", email = "your.email@example.com", role = c("aut", "cre"))
+Description: 
+    linkbreedeR provides R wrappers for popular genetic analysis tools including 
+    blupf90+, PLINK, and renumf90. Users can run these tools directly from R without 
+    needing to separately install external software. The package includes pre-compiled 
+    binaries for Linux, macOS, and Windows platforms.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+Imports:
+    processx,
+    fs
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://github.com/yourusername/linkbreedeR
+BugReports: https://github.com/yourusername/linkbreedeR/issues
